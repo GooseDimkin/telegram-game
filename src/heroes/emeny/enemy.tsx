@@ -1,28 +1,26 @@
 import React, { useEffect, useState } from "react";
-import styles from "./enemie.module.css";
+import styles from "./enemy.module.css";
 import HealthBar from "../../elements/healthBar/healthBar.tsx";
 
-function Enemie() {
+function Enemie({ takenDamage }) {
   const [enemieHealth, setEnemieHealth] = useState(100);
   const [enemieHealthLostHealth, setEnemieHealthLostHealth] = useState(100);
-
-  const DAMAGE = 10;
 
   useEffect(() => {
     let intervalEnemies;
     const decreaseEnemy1health = () => {
-      setEnemieHealth((prevCount) => prevCount - DAMAGE);
-      setEnemieHealthLostHealth((prevState) => prevState - DAMAGE);
+      setEnemieHealth((prevCount) => prevCount - takenDamage);
+      setEnemieHealthLostHealth((prevState) => prevState - takenDamage);
     };
     intervalEnemies = setInterval(decreaseEnemy1health, 1000);
 
     return () => clearInterval(intervalEnemies);
-  }, []);
+  }, [takenDamage]);
 
   return (
     <div className={styles.enemyWrapper}>
       <HealthBar health={enemieHealth} lostHealth={enemieHealthLostHealth} />
-      <div className={styles.enemy} />
+      <img className={styles.enemy} src="enemy.png" alt="enemy" />
     </div>
   );
 }

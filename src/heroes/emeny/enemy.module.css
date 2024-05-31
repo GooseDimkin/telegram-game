@@ -7,8 +7,7 @@
 }
 
 .enemy {
-  height: 100px;
+  height: 130px;
   width: 100px;
-  background-color: rgb(51, 203, 140);
   border-radius: 100%;
 }

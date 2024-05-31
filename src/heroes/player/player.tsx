@@ -6,10 +6,12 @@ function Player() {
   const [playerHealth, setPlayerHealth] = useState(100);
   const [playerLostHealth, setPlayerLostHealth] = useState(100);
 
+  const DAMAGE = 0;
+
   useEffect(() => {
     const decreasePlayerhealth = () => {
-      setPlayerHealth((prevCount) => prevCount - 10);
-      setPlayerLostHealth((prevState) => prevState - 10);
+      setPlayerHealth((prevCount) => prevCount - DAMAGE);
+      setPlayerLostHealth((prevState) => prevState - DAMAGE);
     };
     const intervalPlayer = setInterval(decreasePlayerhealth, 2000);
     return () => clearInterval(intervalPlayer);
@@ -18,7 +20,7 @@ function Player() {
   return (
     <div className={styles.playerWrapper}>
       <HealthBar health={playerHealth} lostHealth={playerLostHealth} />
-      <div className={styles.player} />
+      <img className={styles.player} src="player.png" alt="player" />
     </div>
   );
 }
