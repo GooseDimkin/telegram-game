@@ -1,0 +1,14 @@
+.enemyWrapper:nth-child(1) {
+  margin-top: 30px;
+}
+
+.enemyWrapper {
+  margin-bottom: 200px;
+}
+
+.enemy {
+  height: 100px;
+  width: 100px;
+  background-color: rgb(51, 203, 140);
+  border-radius: 100%;
+}

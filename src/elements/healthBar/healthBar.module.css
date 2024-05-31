@@ -1,0 +1,22 @@
+.healthBarWrapper {
+  height: 10px;
+  width: 100px;
+  background-color: white;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.healthBar {
+  height: 10px;
+  background-color: rgb(207, 71, 71);
+  margin-bottom: 10px;
+  z-index: 99;
+}
+
+.spenthealthBar {
+  height: 10px;
+  background-color: rgb(255, 255, 0);
+  margin-bottom: 10px;
+  transition: 1s;
+  position: absolute;
+}
