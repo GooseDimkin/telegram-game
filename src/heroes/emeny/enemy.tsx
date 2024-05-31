@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./enemy.module.css";
 import HealthBar from "../../elements/healthBar/healthBar.tsx";
 
-function Enemie({ takenDamage }) {
+function Enemie({ takenDamage, position }) {
   const [enemieHealth, setEnemieHealth] = useState(100);
   const [enemieHealthLostHealth, setEnemieHealthLostHealth] = useState(100);
 
@@ -18,9 +18,11 @@ function Enemie({ takenDamage }) {
   }, [takenDamage]);
 
   return (
-    <div className={styles.enemyWrapper}>
-      <HealthBar health={enemieHealth} lostHealth={enemieHealthLostHealth} />
-      <img className={styles.enemy} src="enemy.png" alt="enemy" />
+    <div className={styles.moving} style={{ left: `${position}px` }}>
+      <div className={styles.enemyWrapper}>
+        <HealthBar health={enemieHealth} lostHealth={enemieHealthLostHealth} />
+        <img className={styles.enemy} src="enemy.png" alt="enemy" />
+      </div>
     </div>
   );
 }

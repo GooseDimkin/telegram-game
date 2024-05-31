@@ -1,35 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./App.module.css";
 import Player from "./heroes/player/player.tsx";
 import Enemie from "./heroes/emeny/enemy.tsx";
 
 function App() {
   const [enemieTakenDamage, setEnemieTakenDamage] = useState(0);
+  const [position, setPosition] = useState(800);
 
-  const setEnemieTakenDamageFoo = (damage: number) => {
-    setEnemieTakenDamage(damage);
-  };
+  // const setEnemieTakenDamageFoo = (damage: number) => {
+  //   setEnemieTakenDamage(damage);
+  // };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPosition((prev) => (prev > 0 ? prev - 10 : 800));
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className={styles.outerWrapper}>
-      <div className={styles.wrapper} style={{ backgroundImage: 'background.jpg' }}>
+      <div
+        className={styles.wrapper}
+        style={{ backgroundImage: "background.jpg" }}
+      >
         <Player />
-        <div className={styles.enemiesWrapper}>
-          <Enemie takenDamage={enemieTakenDamage} />
-          {/* <Enemie takenDamage={enemieTakenDamage} /> */}
-        </div>
-        <button
-          onClick={() => setEnemieTakenDamageFoo(7)}
-          className={styles.button}
-        >
-          Sword
-        </button>
-        <button
-          onClick={() => setEnemieTakenDamageFoo(20)}
-          className={styles.button}
-        >
-          AWP
-        </button>
+        <Enemie takenDamage={enemieTakenDamage} position={position} />
       </div>
     </div>
   );

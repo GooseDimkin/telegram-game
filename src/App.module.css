@@ -16,18 +16,7 @@
   background-size: cover;
   background-position: center;
   height: 100vh;
-}
 
-.enemiesWrapper {
-  display: flex;
-  column-gap: 20px;
-  margin-right: 50px;
-}
-
-.button {
-  background-color: rgb(202, 145, 255);
-  border: none;
-  padding: 20px 40px;
-  border-radius: 10px;
-  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
