@@ -3,14 +3,16 @@ import styles from "./enemie.module.css";
 import HealthBar from "../../elements/healthBar/healthBar.tsx";
 
 function Enemie() {
-  const [enemieHealth1, setEnemieHealth1] = useState(100);
-  const [enemieHealth1LostHealth, setEnemieHealth1LostHealth] = useState(100);
+  const [enemieHealth, setEnemieHealth] = useState(100);
+  const [enemieHealthLostHealth, setEnemieHealthLostHealth] = useState(100);
+
+  const DAMAGE = 10;
 
   useEffect(() => {
     let intervalEnemies;
     const decreaseEnemy1health = () => {
-      setEnemieHealth1((prevCount) => prevCount - 10);
-      setEnemieHealth1LostHealth((prevState) => prevState - 10);
+      setEnemieHealth((prevCount) => prevCount - DAMAGE);
+      setEnemieHealthLostHealth((prevState) => prevState - DAMAGE);
     };
     intervalEnemies = setInterval(decreaseEnemy1health, 1000);
 
@@ -19,7 +21,7 @@ function Enemie() {
 
   return (
     <div className={styles.enemyWrapper}>
-      <HealthBar health={enemieHealth1} lostHealth={enemieHealth1LostHealth} />
+      <HealthBar health={enemieHealth} lostHealth={enemieHealthLostHealth} />
       <div className={styles.enemy} />
     </div>
   );
