@@ -19,7 +19,7 @@ function Player() {
 
   return (
     <div className={styles.playerWrapper}>
-      <HealthBar health={playerHealth} lostHealth={playerLostHealth} />
+      <HealthBar health={playerHealth} lostHealth={playerLostHealth} player />
       <img className={styles.player} src="player.png" alt="player" />
     </div>
   );
