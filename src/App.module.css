@@ -67,3 +67,17 @@
 .heroHealthBar .health.low {
   background-color: #f44336;
 }
+
+.gameOver {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: rgba(45, 45, 45, 0.641);
+  z-index: 9999;
+  p {
+    font-size: 50px;
+    font-weight: 700;
+  }
+}
