@@ -28,8 +28,14 @@ const App = () => {
         if (prevEnemies.length === 0) return prevEnemies;
 
         const updatedEnemies = prevEnemies.map((enemy, index) => {
-          if (enemy.x >= 600) {
+          if (enemy.x >= 600 && index !== 0) {
             return enemy;
+          }
+          if (enemy.x >= 600 && index === 0) {
+            return {
+              ...enemy,
+              health: enemy.health - 10,
+            };
           }
           if (index === 0) {
             return {
