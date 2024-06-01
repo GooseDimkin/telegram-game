@@ -13,7 +13,7 @@ const Enemy = ({ id, x, y, health, removeEnemy }) => {
       <div className={styles.healthBar}>
         <div className={styles.health} style={{ width: `${health}%` }} />
       </div>
-      <img src="enemy.png" alt="enemy" />
+      <img src="dog.gif" alt="enemy" />
     </div>
   );
 };
@@ -23,7 +23,7 @@ const App = () => {
   const [heroHealth, setHeroHealth] = useState(100);
   const [isGameOver, setIsGameOver] = useState(false);
 
-  const windowWidth = window.innerWidth > 730 ? 600 : window.innerWidth -100;
+  const windowWidth = window.innerWidth > 730 ? 600 : window.innerWidth - 100;
 
   useEffect(() => {
     if (heroHealth === 0) {
@@ -85,7 +85,12 @@ const App = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (enemies.some((enemy) => enemy.x >= (window.innerWidth > 730 ? windowWidth : windowWidth + 5))) {
+      if (
+        enemies.some(
+          (enemy) =>
+            enemy.x >= (window.innerWidth > 730 ? windowWidth : windowWidth + 5)
+        )
+      ) {
         clearInterval(interval);
         setHeroHealth((prevHealth) => prevHealth - 5);
       }
