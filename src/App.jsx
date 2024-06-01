@@ -23,6 +23,8 @@ const App = () => {
   const [heroHealth, setHeroHealth] = useState(100);
   const [isGameOver, setIsGameOver] = useState(false);
 
+  const windowWidth = window.innerWidth > 730 ? 600 : window.innerWidth -100;
+
   useEffect(() => {
     if (heroHealth === 0) {
       setIsGameOver(true);
@@ -35,10 +37,10 @@ const App = () => {
         if (prevEnemies.length === 0) return prevEnemies;
 
         const updatedEnemies = prevEnemies.map((enemy, index) => {
-          if (enemy.x >= 600 && index !== 0) {
+          if (enemy.x >= windowWidth && index !== 0) {
             return enemy;
           }
-          if (enemy.x >= 600 && index === 0) {
+          if (enemy.x >= windowWidth && index === 0) {
             return {
               ...enemy,
               health: enemy.health - (isGameOver ? 0 : 10),
@@ -83,11 +85,11 @@ const App = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (enemies.some((enemy) => enemy.x >= 600)) {
+      if (enemies.some((enemy) => enemy.x >= (window.innerWidth > 730 ? windowWidth : windowWidth + 5))) {
         clearInterval(interval);
-        setHeroHealth((prevHealth) => prevHealth - 10);
+        setHeroHealth((prevHealth) => prevHealth - 5);
       }
-    }, 500);
+    }, 2000);
   }, [enemies]);
 
   const removeEnemy = (id) => {

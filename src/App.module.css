@@ -6,7 +6,7 @@
 .game {
   position: relative;
   width: 100%;
-  max-width: 720px;
+  max-width: 730px;
   height: 100vh;
   background-color: #f0f0f0;
   overflow: hidden;
@@ -79,5 +79,22 @@
   p {
     font-size: 50px;
     font-weight: 700;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .hero {
+    width: 100px;
+    height: 80px;
+  }
+  .enemy {
+    img {
+      height: 50px;
+      width: 38px;
+    }
+  }
+  .heroHealthBar {
+    width: 120px;
+    height: 10px;
   }
 }
