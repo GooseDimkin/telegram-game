@@ -9,7 +9,7 @@ const Enemy = ({ id, x, y, health, removeEnemy }) => {
   }, [health, id, removeEnemy]);
 
   return (
-    <div className={styles.enemy} style={{ top: y, right: x }}>
+    <div className={styles.enemy} style={{ top: `${y}%`, right: x }}>
       <div className={styles.healthBar}>
         <div className={styles.health} style={{ width: `${health}%` }} />
       </div>
@@ -67,11 +67,12 @@ const App = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isGameOver) {
-        const windowHeight = 1100;
+        const enemyHeight = 80;
+        const windowHeight = 160;
         const newEnemy = {
           id: Date.now(),
           x: 0,
-          y: windowHeight / 2 + Math.random() * 100 - 50,
+          y: windowHeight - enemyHeight - Math.random() * 10,
           health: 100,
         };
         setEnemies((prevEnemies) => [...prevEnemies, newEnemy]);
