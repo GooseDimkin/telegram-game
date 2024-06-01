@@ -44,7 +44,7 @@ const Projectile = ({ id, x, y, removeProjectile }) => {
       src="projectile.gif"
       alt="projectile"
       className={styles.projectile}
-      style={{ top: `${position.y}px`, left: `${position.x}px` }}
+      style={{ top: `${position.y - 475}%`, left: `${position.x}px` }}
     />
   );
 };
