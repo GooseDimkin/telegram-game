@@ -1,12 +1,15 @@
 .outerWrapper {
   display: flex;
   justify-content: center;
+  background-image: url("./../public/nonGameBackground.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .game {
   position: relative;
   width: 100%;
-  max-width: 730px;
+  max-width: 768px;
   height: 100vh;
   background-color: #f0f0f0;
   overflow: hidden;
