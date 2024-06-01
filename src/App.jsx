@@ -53,7 +53,7 @@ const App = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const windowHeight = 950;
+      const windowHeight = 1100;
       const newEnemy = {
         id: Date.now(),
         x: 0,

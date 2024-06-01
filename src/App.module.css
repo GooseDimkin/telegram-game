@@ -18,7 +18,7 @@
 .hero {
   position: absolute;
   left: 0;
-  top: 70%;
+  top: 80%;
   width: 150px;
   height: 130px;
   transform: translateY(-50%);
