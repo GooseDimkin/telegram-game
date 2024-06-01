@@ -18,8 +18,9 @@ const Enemy = ({ id, x, y, health, removeEnemy }) => {
   return (
     <div className={styles.enemy} style={{ top: y, right: x }}>
       <div className={styles.healthBar}>
-        <div className={styles.health} style={{ width: `${health}%` }}></div>
+        <div className={styles.health} style={{ width: `${health}%` }}/>
       </div>
+      <img src="enemy.png" alt="enemie"/>
     </div>
   );
 };
@@ -42,7 +43,7 @@ const App = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const windowHeight = window.innerHeight;
+      const windowHeight = 950;
       const newEnemy = {
         id: Date.now(),
         x: 0,
@@ -61,7 +62,7 @@ const App = () => {
   return (
     <div className={styles.outerWrapper}>
       <div className={styles.game}>
-        <div className={styles.hero} />
+        <img src="player.png" alt="player" className={styles.hero}/>
         {enemies.map((enemy) => (
           <Enemy key={enemy.id} {...enemy} removeEnemy={removeEnemy} />
         ))}
