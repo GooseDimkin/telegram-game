@@ -31,21 +31,21 @@ const App = () => {
             // Первый враг теряет здоровье и двигается
             return {
               ...enemy,
-              x: enemy.x + 100,
+              x: enemy.x + 20,
               health: enemy.health - 10,
             };
           } else {
             // Остальные враги только двигаются
             return {
               ...enemy,
-              x: enemy.x + 100,
+              x: enemy.x + 20,
             };
           }
         });
 
         return updatedEnemies;
       });
-    }, 1000);
+    }, 200);
     return () => clearInterval(interval);
   }, []);
 
