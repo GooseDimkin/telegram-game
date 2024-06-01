@@ -10,7 +10,7 @@
   height: 100vh;
   background-color: #f0f0f0;
   overflow: hidden;
-  background-image: url('./../public/background.jpg');
+  background-image: url("./../public/background.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -44,5 +44,26 @@
 
 .health {
   height: 100%;
-  background-color: #CF4747;
+  background-color: #cf4747;
+}
+
+.heroHealthBar {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 200px;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.heroHealthBar .health {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
+.heroHealthBar .health.low {
+  background-color: #f44336;
 }

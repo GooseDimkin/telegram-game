@@ -20,6 +20,7 @@ const Enemy = ({ id, x, y, health, removeEnemy }) => {
 
 const App = () => {
   const [enemies, setEnemies] = useState([]);
+  const [heroHealth, setHeroHealth] = useState(100);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,15 +28,16 @@ const App = () => {
         if (prevEnemies.length === 0) return prevEnemies;
 
         const updatedEnemies = prevEnemies.map((enemy, index) => {
+          if (enemy.x >= 600) {
+            return enemy;
+          }
           if (index === 0) {
-            // Первый враг теряет здоровье и двигается
             return {
               ...enemy,
               x: enemy.x + 20,
               health: enemy.health - 10,
             };
           } else {
-            // Остальные враги только двигаются
             return {
               ...enemy,
               x: enemy.x + 20,
@@ -63,6 +65,15 @@ const App = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (enemies.some((enemy) => enemy.x >= 600)) {
+        clearInterval(interval);
+        setHeroHealth((prevHealth) => prevHealth - 10);
+      }
+    }, 500);
+  }, [enemies]);
+
   const removeEnemy = (id) => {
     setEnemies((prevEnemies) => prevEnemies.filter((enemy) => enemy.id !== id));
   };
@@ -70,6 +81,12 @@ const App = () => {
   return (
     <div className={styles.outerWrapper}>
       <div className={styles.game}>
+        <div className={styles.heroHealthBar}>
+          <div
+            className={`${styles.health} ${heroHealth <= 30 && styles.low}`}
+            style={{ width: `${heroHealth}%` }}
+          />
+        </div>
         <img src="player.png" alt="player" className={styles.hero} />
         {enemies.map((enemy) => (
           <Enemy key={enemy.id} {...enemy} removeEnemy={removeEnemy} />
