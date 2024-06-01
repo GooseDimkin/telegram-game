@@ -4,6 +4,7 @@
   background-image: url("./../public/nonGameBackground.jpg");
   background-size: cover;
   background-position: center;
+  user-select: none;
 }
 
 .game {
