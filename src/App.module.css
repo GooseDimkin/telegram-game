@@ -98,8 +98,8 @@
   }
   .enemy {
     img {
-      height: 50px;
-      width: 38px;
+      height: 80px;
+      width: 70px;
     }
   }
   .heroHealthBar {
