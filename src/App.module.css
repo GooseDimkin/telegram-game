@@ -95,6 +95,7 @@
   position: absolute;
   width: 30px;
   height: 30px;
+  transform: rotate(5deg);
 }
 
 @media only screen and (max-width: 376px) {
