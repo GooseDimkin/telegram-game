@@ -35,7 +35,7 @@ const Projectile = ({
       const windowHeight = 160;
       setPosition((prevPosition) => ({
         x: prevPosition.x + 1,
-        y: windowHeight - enemyHeight,
+        y: (enemies[0] && enemies[0].y) + 3,
       }));
     }, 1);
 
