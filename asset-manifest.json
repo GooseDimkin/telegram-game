@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/telegram-game/static/css/main.6d2b5341.css",
-    "main.js": "/telegram-game/static/js/main.0dd538c1.js",
+    "main.css": "/telegram-game/static/css/main.8fe3f4a3.css",
+    "main.js": "/telegram-game/static/js/main.af91c373.js",
     "static/js/453.a5a72b74.chunk.js": "/telegram-game/static/js/453.a5a72b74.chunk.js",
     "static/media/nonGameBackground.jpg": "/telegram-game/static/media/nonGameBackground.ad663a482deae8d7006b.jpg",
     "static/media/background.jpg": "/telegram-game/static/media/background.4d8591bf569b47a0caed.jpg",
     "index.html": "/telegram-game/index.html",
-    "main.6d2b5341.css.map": "/telegram-game/static/css/main.6d2b5341.css.map",
-    "main.0dd538c1.js.map": "/telegram-game/static/js/main.0dd538c1.js.map",
+    "main.8fe3f4a3.css.map": "/telegram-game/static/css/main.8fe3f4a3.css.map",
+    "main.af91c373.js.map": "/telegram-game/static/js/main.af91c373.js.map",
     "453.a5a72b74.chunk.js.map": "/telegram-game/static/js/453.a5a72b74.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6d2b5341.css",
-    "static/js/main.0dd538c1.js"
+    "static/css/main.8fe3f4a3.css",
+    "static/js/main.af91c373.js"
   ]
 }
