@@ -229,7 +229,7 @@ const App = () => {
             style={{ width: `${heroHealth}%` }}
           />
         </div>
-        <img src="player.png" alt="player" className={styles.hero} />
+        <img src="player.gif" alt="player" className={styles.hero} />
         {enemies.map((enemy) => (
           <Enemy key={enemy.id} {...enemy} removeEnemy={removeEnemy} />
         ))}
