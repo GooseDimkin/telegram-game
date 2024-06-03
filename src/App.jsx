@@ -24,9 +24,11 @@ const Projectile = ({ id, x, y, removeProjectile }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
+      const enemyHeight = 80;
+      const windowHeight = 160;
       setPosition((prevPosition) => ({
         x: prevPosition.x + 1,
-        y: prevPosition.y + 0.01,
+        y: windowHeight - enemyHeight,
       }));
     }, 1);
 
@@ -44,7 +46,7 @@ const Projectile = ({ id, x, y, removeProjectile }) => {
       src="projectile.gif"
       alt="projectile"
       className={styles.projectile}
-      style={{ top: `${position.y - 475}%`, left: `${position.x}px` }}
+      style={{ top: `${position.y}%`, left: `${position.x}px` }}
     />
   );
 };
