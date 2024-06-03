@@ -71,7 +71,6 @@ const App = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log(isProjectileHit, 'isProjectileHit')
       setEnemies((prevEnemies) => {
         if (prevEnemies.length === 0) return prevEnemies;
 
@@ -112,7 +111,7 @@ const App = () => {
         const windowHeight = 160;
         const newEnemy = {
           id: Date.now(),
-          x: 0,
+          x: -80,
           y: windowHeight - enemyHeight - Math.random() * 10,
           health: 100,
         };
