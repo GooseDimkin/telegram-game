@@ -35,7 +35,7 @@ const Projectile = ({ id, x, y, removeProjectile, enemies, setIsProjectileHit })
     return () => clearInterval(interval);
   }, []);
 
-  let enemiesCollision = 760 - (enemies[0] && enemies[0].x)
+  let enemiesCollision = window.innerWidth > 730 ? 760 - (enemies[0] && enemies[0].x) : 400 - (enemies[0] && enemies[0].x)
 
   useEffect(() => {
     if (position.x >= enemiesCollision || position.y >= window.innerHeight) {
@@ -61,6 +61,8 @@ const App = () => {
   const [isGameOver, setIsGameOver] = useState(false);
   const [isProjectileHit, setIsProjectileHit] = useState(false)
 
+  const windowWidth = window.innerWidth > 730 ? 600 : window.innerWidth - 100;
+
   useEffect(() => {
     if (heroHealth === 0) {
       setIsGameOver(true);
@@ -74,10 +76,10 @@ const App = () => {
         if (prevEnemies.length === 0) return prevEnemies;
 
         const updatedEnemies = prevEnemies.map((enemy, index) => {
-          if (enemy.x >= window.innerWidth && index !== 0) {
+          if (enemy.x >= windowWidth && index !== 0) {
             return enemy;
           }
-          if (isProjectileHit && enemy.x >= window.innerWidth && index === 0) {
+          if (isProjectileHit && enemy.x >= windowWidth && index === 0) {
             return {
               ...enemy,
               health: enemy.health - (isGameOver ? 0 : 35),
@@ -125,17 +127,13 @@ const App = () => {
       if (
         enemies.some(
           (enemy) =>
-            enemy.x >=
-            (window.innerWidth > 730
-              ? window.innerWidth - 100
-              : window.innerWidth - 95)
+            enemy.x >= (window.innerWidth > 730 ? windowWidth : windowWidth + 5)
         )
       ) {
         clearInterval(interval);
         setHeroHealth((prevHealth) => prevHealth - 5);
       }
     }, 2000);
-    return () => clearInterval(interval);
   }, [enemies]);
 
   const removeEnemy = (id) => {
