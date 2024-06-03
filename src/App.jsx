@@ -19,7 +19,7 @@ const Enemy = ({ id, x, y, health, removeEnemy }) => {
   );
 };
 
-const Projectile = ({ id, x, y, removeProjectile }) => {
+const Projectile = ({ id, x, y, removeProjectile, enemies }) => {
   const [position, setPosition] = useState({ x, y });
 
   useEffect(() => {
@@ -35,8 +35,10 @@ const Projectile = ({ id, x, y, removeProjectile }) => {
     return () => clearInterval(interval);
   }, []);
 
+  let test = 760 - enemies[0].x
+
   useEffect(() => {
-    if (position.x >= window.innerWidth || position.y >= window.innerHeight) {
+    if (position.x >= test || position.y >= window.innerHeight) {
       removeProjectile(id);
     }
   }, [position.x, position.y, removeProjectile, id]);
@@ -155,9 +157,9 @@ const App = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       throwProjectile();
-    }, 1000); // Выстрел каждую секунду (1000 миллисекунд)
+    }, 1000);
 
-    return () => clearInterval(interval); // Очистка интервала при размонтировании компонента
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -183,6 +185,7 @@ const App = () => {
             key={projectile.id}
             {...projectile}
             removeProjectile={removeProjectile}
+            enemies={enemies}
           />
         ))}
       </div>
