@@ -98,6 +98,17 @@
   transform: rotate(5deg);
 }
 
+.scorePopup {
+  position: absolute;
+  font-size: 40px;
+  font-weight: 700;
+  background: linear-gradient(45deg, #00ff3c, #ff0080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px white;
+  text-stroke: 1px white;
+}
+
 @media only screen and (max-width: 376px) {
   .hero {
     width: 100px;

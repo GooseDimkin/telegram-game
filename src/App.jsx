@@ -19,7 +19,14 @@ const Enemy = ({ id, x, y, health, removeEnemy }) => {
   );
 };
 
-const Projectile = ({ id, x, y, removeProjectile, enemies, setIsProjectileHit }) => {
+const Projectile = ({
+  id,
+  x,
+  y,
+  removeProjectile,
+  enemies,
+  setIsProjectileHit,
+}) => {
   const [position, setPosition] = useState({ x, y });
 
   useEffect(() => {
@@ -35,11 +42,14 @@ const Projectile = ({ id, x, y, removeProjectile, enemies, setIsProjectileHit })
     return () => clearInterval(interval);
   }, []);
 
-  let enemiesCollision = window.innerWidth > 730 ? 760 - (enemies[0] && enemies[0].x) : 400 - (enemies[0] && enemies[0].x)
+  let enemiesCollision =
+    window.innerWidth > 730
+      ? 760 - (enemies[0] && enemies[0].x)
+      : 400 - (enemies[0] && enemies[0].x);
 
   useEffect(() => {
     if (position.x >= enemiesCollision || position.y >= window.innerHeight) {
-      setIsProjectileHit(true)
+      setIsProjectileHit(true);
       removeProjectile(id);
     }
   }, [position.x, position.y, removeProjectile, id]);
@@ -54,12 +64,53 @@ const Projectile = ({ id, x, y, removeProjectile, enemies, setIsProjectileHit })
   );
 };
 
+const ScorePopup = ({ scorePopups, score }) => {
+  const [currentY, setCurrentY] = useState(scorePopups && scorePopups.y);
+
+  useEffect(() => {
+    const targetY = (scorePopups && scorePopups.y) - 10;
+    const distance = targetY - (scorePopups && scorePopups.y);
+    const duration = 1000;
+
+    let startTime;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const elapsedTime = timestamp - startTime;
+      const progress = Math.min(elapsedTime / duration, 1);
+      const newY = (scorePopups && scorePopups.y) + distance * progress;
+      setCurrentY(newY);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+
+    return () => {
+      setCurrentY(scorePopups && scorePopups.y);
+    };
+  }, [scorePopups]);
+
+  return (
+    <div
+      className={styles.scorePopup}
+      style={{ top: `${currentY}%`, right: scorePopups && scorePopups.x }}
+    >
+      {score !== 0 && `+${score}`}
+    </div>
+  );
+};
+
 const App = () => {
   const [enemies, setEnemies] = useState([]);
   const [projectiles, setProjectiles] = useState([]);
   const [heroHealth, setHeroHealth] = useState(100);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [isProjectileHit, setIsProjectileHit] = useState(false)
+  const [isProjectileHit, setIsProjectileHit] = useState(false);
+  const [scorePopups, setScorePopups] = useState();
+  const [score, setScore] = useState(0);
 
   const windowWidth = window.innerWidth > 730 ? 600 : window.innerWidth - 100;
 
@@ -135,8 +186,18 @@ const App = () => {
     }, 2000);
   }, [enemies]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      throwProjectile();
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const removeEnemy = (id) => {
+    setScore((prevEnemies) => prevEnemies + 1);
     setEnemies((prevEnemies) => prevEnemies.filter((enemy) => enemy.id !== id));
+    setScorePopups({ id: Date.now(), x: enemies[0].x - 50, y: enemies[0].y });
   };
 
   const removeProjectile = (id) => {
@@ -153,14 +214,6 @@ const App = () => {
     };
     setProjectiles((prevProjectiles) => [...prevProjectiles, newProjectile]);
   };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      throwProjectile();
-    }, 500);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className={styles.outerWrapper}>
@@ -189,6 +242,7 @@ const App = () => {
             setIsProjectileHit={setIsProjectileHit}
           />
         ))}
+        <ScorePopup scorePopups={scorePopups} score={score} />
       </div>
     </div>
   );
