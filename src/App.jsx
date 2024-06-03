@@ -26,7 +26,7 @@ const Projectile = ({ id, x, y, removeProjectile }) => {
     const interval = setInterval(() => {
       setPosition((prevPosition) => ({
         x: prevPosition.x + 1,
-        y: prevPosition.y,
+        y: prevPosition.y + 0.01,
       }));
     }, 1);
 
