@@ -9,6 +9,12 @@ const Enemies = ({
   removeEnemy,
   windowWidth,
 }) => {
+  const ENEMY_DAMAGE = 35;
+  const ENEMY_MOVEMENT_SPEED = 50;
+  const ENEMY_HIGHT = 80;
+  const WINDOW_HEIGHT = 160;
+  const ENEMY_SPAWN_COORDINATES = -80;
+
   useEffect(() => {
     const interval = setInterval(() => {
       setEnemies((prevEnemies) => {
@@ -21,19 +27,19 @@ const Enemies = ({
           if (isProjectileHit && enemy.x >= windowWidth && index === 0) {
             return {
               ...enemy,
-              health: enemy.health - (isGameOver ? 0 : 35),
+              health: enemy.health - (isGameOver ? 0 : ENEMY_DAMAGE),
             };
           }
           if (isProjectileHit && index === 0) {
             return {
               ...enemy,
               x: enemy.x + 50,
-              health: enemy.health - (isGameOver ? 0 : 35),
+              health: enemy.health - (isGameOver ? 0 : ENEMY_DAMAGE),
             };
           } else {
             return {
               ...enemy,
-              x: enemy.x + (isGameOver ? 0 : 50),
+              x: enemy.x + (isGameOver ? 0 : ENEMY_MOVEMENT_SPEED),
             };
           }
         });
@@ -47,12 +53,10 @@ const Enemies = ({
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isGameOver) {
-        const enemyHeight = 80;
-        const windowHeight = 160;
         const newEnemy = {
           id: Date.now(),
-          x: -80,
-          y: windowHeight - enemyHeight - Math.random() * 10,
+          x: ENEMY_SPAWN_COORDINATES,
+          y: WINDOW_HEIGHT - ENEMY_HIGHT - Math.random() * 10,
           health: 100,
         };
         setEnemies((prevEnemies) => [...prevEnemies, newEnemy]);

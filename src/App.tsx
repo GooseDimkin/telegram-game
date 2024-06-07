@@ -7,7 +7,9 @@ import ScorePopup from "./components/scorePopup/scorePopup.tsx";
 import { IEnemy, IScorePopup } from "./interface/interface.tsx";
 
 const App = () => {
-  const windowWidth = window.innerWidth > 730 ? 600 : window.innerWidth - 100;
+  const MOBILE_SCREEN = 730;
+  const windowWidth =
+    window.innerWidth > MOBILE_SCREEN ? 600 : window.innerWidth - 100;
 
   const [enemies, setEnemies] = useState<IEnemy[]>([]);
   const [heroHealth, setHeroHealth] = useState(100);
@@ -27,7 +29,8 @@ const App = () => {
       if (
         enemies.some(
           (enemy) =>
-            enemy.x >= (window.innerWidth > 730 ? windowWidth : windowWidth + 5)
+            enemy.x >=
+            (window.innerWidth > MOBILE_SCREEN ? windowWidth : windowWidth + 5)
         )
       ) {
         clearInterval(interval);
