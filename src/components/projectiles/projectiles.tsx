@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Projectile from "./projectile/projectile.tsx";
-
-interface IProjectile {
-  id: number;
-  x: number;
-  y: number;
-}
+import { IProjectile } from "../../interface/interface.tsx";
 
 const Projectiles = ({ setIsProjectileHit, enemies }) => {
   const [projectiles, setProjectiles] = useState<IProjectile[]>([]);

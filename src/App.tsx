@@ -2,58 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./App.module.css";
 import Enemies from "./components/enemies/enemies.tsx";
 import Projectiles from "./components/projectiles/projectiles.tsx";
-
-const ScorePopup = ({ scorePopups, score }) => {
-  const [currentY, setCurrentY] = useState(scorePopups && scorePopups.y);
-
-  useEffect(() => {
-    const targetY = (scorePopups && scorePopups.y) - 10;
-    const distance = targetY - (scorePopups && scorePopups.y);
-    const duration = 1000;
-
-    let startTime;
-
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const elapsedTime = timestamp - startTime;
-      const progress = Math.min(elapsedTime / duration, 1);
-      const newY = (scorePopups && scorePopups.y) + distance * progress;
-      setCurrentY(newY);
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
-
-    return () => {
-      setCurrentY(scorePopups && scorePopups.y);
-    };
-  }, [scorePopups]);
-
-  return (
-    <div
-      className={styles.scorePopup}
-      style={{ top: `${currentY}%`, right: scorePopups && scorePopups.x }}
-    >
-      {score !== 0 && `+${score}`}
-    </div>
-  );
-};
-
-interface IEnemy {
-  id: number;
-  x: number;
-  y: number;
-  health: number;
-}
-
-interface IScorePopup {
-  id: number;
-  x: number;
-  y: number;
-}
+import Hero from "./components/hero/hero.tsx";
+import ScorePopup from "./components/scorePopup/scorePopup.tsx";
+import { IEnemy, IScorePopup } from "./interface/interface.tsx";
 
 const App = () => {
   const windowWidth = window.innerWidth > 730 ? 600 : window.innerWidth - 100;
@@ -99,13 +50,7 @@ const App = () => {
             <p>Game Over</p>
           </div>
         )}
-        <div className={styles.heroHealthBar}>
-          <div
-            className={`${styles.health} ${heroHealth <= 30 && styles.low}`}
-            style={{ width: `${heroHealth}%` }}
-          />
-        </div>
-        <img src="player.gif" alt="player" className={styles.hero} />
+        <Hero heroHealth={heroHealth} />
         <Enemies
           enemies={enemies}
           setEnemies={setEnemies}

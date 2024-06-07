@@ -19,36 +19,6 @@
   background-position: center;
 }
 
-.hero {
-  position: absolute;
-  left: 0;
-  top: 80%;
-  width: 150px;
-  height: 170px;
-  transform: translateY(-50%);
-}
-
-.heroHealthBar {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  width: 200px;
-  height: 20px;
-  background-color: #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.heroHealthBar .health {
-  height: 100%;
-  background: linear-gradient(to top, #17831b, rgb(172, 248, 128));
-  transition: width 0.3s ease;
-}
-
-.heroHealthBar .health.low {
-  background: linear-gradient(to top, #a02a22, rgb(217, 101, 101));
-}
-
 .gameOver {
   position: relative;
   display: flex;
@@ -60,27 +30,5 @@
   p {
     font-size: 50px;
     font-weight: 700;
-  }
-}
-
-.scorePopup {
-  position: absolute;
-  font-size: 40px;
-  font-weight: 700;
-  background: linear-gradient(45deg, #00ff3c, #ff0080);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px white;
-  text-stroke: 1px white;
-}
-
-@media only screen and (max-width: 376px) {
-  .hero {
-    width: 150px;
-    height: 170px;
-  }
-  .heroHealthBar {
-    width: 120px;
-    height: 10px;
   }
 }
