@@ -42,7 +42,7 @@ const Enemies = ({
       });
     }, 500);
     return () => clearInterval(interval);
-  }, [isGameOver, isProjectileHit]);
+  }, [isGameOver, isProjectileHit, setEnemies, windowWidth]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -59,7 +59,7 @@ const Enemies = ({
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [isGameOver]);
+  }, [isGameOver, setEnemies]);
 
   return (
     <div>

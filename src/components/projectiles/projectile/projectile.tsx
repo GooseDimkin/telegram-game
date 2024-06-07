@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from './projectile.module.css'
+import styles from "./projectile.module.css";
 
 const Projectile = ({
   id,
@@ -20,7 +20,7 @@ const Projectile = ({
     }, 1);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [enemies]);
 
   let enemiesCollision =
     window.innerWidth > 730
@@ -32,7 +32,14 @@ const Projectile = ({
       setIsProjectileHit(true);
       removeProjectile(id);
     }
-  }, [position.x, position.y, removeProjectile, id]);
+  }, [
+    position.x,
+    position.y,
+    removeProjectile,
+    id,
+    enemiesCollision,
+    setIsProjectileHit,
+  ]);
 
   return (
     <img

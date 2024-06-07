@@ -34,7 +34,7 @@ const App = () => {
         setHeroHealth((prevHealth) => prevHealth - 5);
       }
     }, 2000);
-  }, [enemies]);
+  }, [enemies, windowWidth]);
 
   const removeEnemy = (id) => {
     setScore((prevEnemies) => prevEnemies + 1);
