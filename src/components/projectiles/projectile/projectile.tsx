@@ -9,6 +9,10 @@ const Projectile = ({
   enemies,
   setIsProjectileHit,
 }) => {
+  const MOBILE_SCREENS = 730;
+  const DESKTOP_HERO_COLLISION = 760;
+  const MOBILE_HERO_COLLISION = 400;
+
   const [position, setPosition] = useState({ x, y });
 
   useEffect(() => {
@@ -23,9 +27,9 @@ const Projectile = ({
   }, [enemies]);
 
   let enemiesCollision =
-    window.innerWidth > 730
-      ? 760 - (enemies[0] && enemies[0].x)
-      : 400 - (enemies[0] && enemies[0].x);
+    window.innerWidth > MOBILE_SCREENS
+      ? DESKTOP_HERO_COLLISION - (enemies[0] && enemies[0].x)
+      : MOBILE_HERO_COLLISION - (enemies[0] && enemies[0].x);
 
   useEffect(() => {
     if (position.x >= enemiesCollision || position.y >= window.innerHeight) {

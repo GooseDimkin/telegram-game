@@ -5,17 +5,17 @@ const ScorePopup = ({ scorePopups, score }) => {
   const [currentY, setCurrentY] = useState(scorePopups && scorePopups.y);
 
   useEffect(() => {
-    const targetY = (scorePopups && scorePopups.y) - 10;
-    const distance = targetY - (scorePopups && scorePopups.y);
-    const duration = 1000;
+    const TARGET_Y = (scorePopups && scorePopups.y) - 10;
+    const DISTANCE = TARGET_Y - (scorePopups && scorePopups.y);
+    const DURATION = 1000;
 
     let startTime;
 
     const animate = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const elapsedTime = timestamp - startTime;
-      const progress = Math.min(elapsedTime / duration, 1);
-      const newY = (scorePopups && scorePopups.y) + distance * progress;
+      const progress = Math.min(elapsedTime / DURATION, 1);
+      const newY = (scorePopups && scorePopups.y) + DISTANCE * progress;
       setCurrentY(newY);
 
       if (progress < 1) {
