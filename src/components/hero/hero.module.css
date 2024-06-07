@@ -1,0 +1,15 @@
+.hero {
+  position: absolute;
+  left: 0;
+  top: 80%;
+  width: 150px;
+  height: 170px;
+  transform: translateY(-50%);
+}
+
+@media only screen and (max-width: 376px) {
+  .hero {
+    width: 150px;
+    height: 170px;
+  }
+}

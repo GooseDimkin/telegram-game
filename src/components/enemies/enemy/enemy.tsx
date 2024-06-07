@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from './enemy.module.css'
-import HealthBar from "../../healthBar/healthBar.tsx";
+import HealthBar from "../enemyHealthBar/enemyHealthBar.tsx";
 
 const Enemy = ({ id, x, y, health, removeEnemy }) => {
   useEffect(() => {

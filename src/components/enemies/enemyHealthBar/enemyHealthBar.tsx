@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./healthBar.module.css";
+import styles from "./enemyHealthBar.module.css";
 
-const HealthBar = ({ health }) => {
+const EnemyHealthBar = ({ health }) => {
   return (
     <div className={styles.healthBar}>
       <div className={styles.health} style={{ width: `${health}%` }} />
@@ -9,4 +9,4 @@ const HealthBar = ({ health }) => {
   );
 };
 
-export default HealthBar;
+export default EnemyHealthBar;
