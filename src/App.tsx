@@ -1,49 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./App.module.css";
 import Enemies from "./components/enemies/enemies.tsx";
-
-const Projectile = ({
-  id,
-  x,
-  y,
-  removeProjectile,
-  enemies,
-  setIsProjectileHit,
-}) => {
-  const [position, setPosition] = useState({ x, y });
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPosition((prevPosition) => ({
-        x: prevPosition.x + 1,
-        y: (enemies[0] && enemies[0].y) + 3,
-      }));
-    }, 1);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  let enemiesCollision =
-    window.innerWidth > 730
-      ? 760 - (enemies[0] && enemies[0].x)
-      : 400 - (enemies[0] && enemies[0].x);
-
-  useEffect(() => {
-    if (position.x >= enemiesCollision || position.y >= window.innerHeight) {
-      setIsProjectileHit(true);
-      removeProjectile(id);
-    }
-  }, [position.x, position.y, removeProjectile, id]);
-
-  return (
-    <img
-      src="projectile.gif"
-      alt="projectile"
-      className={styles.projectile}
-      style={{ top: `${position.y}%`, left: `${position.x}px` }}
-    />
-  );
-};
+import Projectiles from "./components/projectiles/projectiles.tsx";
 
 const ScorePopup = ({ scorePopups, score }) => {
   const [currentY, setCurrentY] = useState(scorePopups && scorePopups.y);
@@ -84,12 +42,6 @@ const ScorePopup = ({ scorePopups, score }) => {
   );
 };
 
-interface IProjectile {
-  id: number;
-  x: number;
-  y: number;
-}
-
 interface IEnemy {
   id: number;
   x: number;
@@ -107,7 +59,6 @@ const App = () => {
   const windowWidth = window.innerWidth > 730 ? 600 : window.innerWidth - 100;
 
   const [enemies, setEnemies] = useState<IEnemy[]>([]);
-  const [projectiles, setProjectiles] = useState<IProjectile[]>([]);
   const [heroHealth, setHeroHealth] = useState(100);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isProjectileHit, setIsProjectileHit] = useState(false);
@@ -119,14 +70,6 @@ const App = () => {
       setIsGameOver(true);
     }
   }, [heroHealth]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      throwProjectile();
-    }, 500);
-
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -142,25 +85,10 @@ const App = () => {
     }, 2000);
   }, [enemies]);
 
-  const removeProjectile = (id) => {
-    setProjectiles((prevProjectiles) =>
-      prevProjectiles.filter((projectile) => projectile.id !== id)
-    );
-  };
-
   const removeEnemy = (id) => {
     setScore((prevEnemies) => prevEnemies + 1);
     setEnemies((prevEnemies) => prevEnemies.filter((enemy) => enemy.id !== id));
     setScorePopups({ id: Date.now(), x: enemies[0].x - 50, y: enemies[0].y });
-  };
-
-  const throwProjectile = () => {
-    const newProjectile = {
-      id: Date.now(),
-      x: 100,
-      y: 550,
-    };
-    setProjectiles((prevProjectiles) => [...prevProjectiles, newProjectile]);
   };
 
   return (
@@ -186,15 +114,10 @@ const App = () => {
           removeEnemy={removeEnemy}
           windowWidth={windowWidth}
         />
-        {projectiles.map((projectile) => (
-          <Projectile
-            key={projectile.id}
-            {...projectile}
-            removeProjectile={removeProjectile}
-            enemies={enemies}
-            setIsProjectileHit={setIsProjectileHit}
-          />
-        ))}
+        <Projectiles
+          setIsProjectileHit={setIsProjectileHit}
+          enemies={enemies}
+        />
         <ScorePopup scorePopups={scorePopups} score={score} />
       </div>
     </div>
