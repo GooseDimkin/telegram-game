@@ -1,0 +1,17 @@
+.enemy {
+  position: absolute;
+  transition: right 1s linear;
+  img {
+    height: 100px;
+    width: 90px;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .enemy {
+    img {
+      height: 80px;
+      width: 70px;
+    }
+  }
+}
