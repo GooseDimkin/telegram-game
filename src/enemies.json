@@ -1,45 +1,17 @@
-{
-    "enemies": [
-      {
-        "id": "1",
-        "health": "100",
-        "vawe": "1"
-      },
-      {
-        "id": "2",
-        "health": "100",
-        "vawe": "1"
-      },
-      {
-        "id": "3",
-        "health": "100",
-        "vawe": "1"
-      },
-      {
-        "id": "4",
-        "health": "100",
-        "vawe": "2"
-      },
-      {
-        "id": "5",
-        "health": "100",
-        "vawe": "2"
-      },
-      {
-        "id": "6",
-        "health": "100",
-        "vawe": "2"
-      },
-      {
-        "id": "7",
-        "health": "100",
-        "vawe": "2"
-      },
-      {
-        "id": "8",
-        "health": "100",
-        "vawe": "2"
-      }
-    ]
+[
+  {
+    "health": "100",
+    "skin": "dog.gif",
+    "enemiesCount": 3
+  },
+  {
+    "health": "100",
+    "skin": "enemy_2.gif",
+    "enemiesCount": 6
+  },
+  {
+    "health": "50",
+    "skin": "dog.gif",
+    "enemiesCount": 12
   }
-  
+]

@@ -3,6 +3,7 @@ export interface IEnemy {
   x: number;
   y: number;
   health: number;
+  skin: string;
 }
 
 export interface IScorePopup {
@@ -20,6 +21,8 @@ export interface IProjectile {
 export interface IEnemies {
   enemies: IEnemy[];
   removeEnemy: (id: number) => void;
+  skin: string;
+  currentVawe: number;
 }
 
 export interface IEnemyHealthBar {
@@ -32,6 +35,8 @@ export interface IEnemyComponent {
   y: number;
   health: number;
   removeEnemy: (id: number) => void;
+  skin: string;
+  currentVawe: number
 }
 
 export interface IHeroHealthBar {
