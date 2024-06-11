@@ -126,6 +126,11 @@ const App = () => {
             <p>Game Over</p>
           </div>
         )}
+        {currentVawe > 0 && (
+          <div className={styles.vawesCounter}>
+            <p>{currentVawe}</p>
+          </div>
+        )}
         <Hero heroHealth={heroHealth} />
         <Enemies
           enemies={enemies}
