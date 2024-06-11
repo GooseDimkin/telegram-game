@@ -143,6 +143,16 @@ const App = () => {
                 />
               </div>
             </div>
+            <div className={styles.pointsWrapper}>
+              <div className={styles.pointWrapper}>
+                <img src="point1.svg" alt="point1" />
+                <p>5000</p>
+              </div>
+              <div className={styles.pointWrapper}>
+                <img src="point2.svg" alt="point1" />
+                <p>5000</p>
+              </div>
+            </div>
           </div>
         </div>
         <Hero heroHealth={heroHealth} />
