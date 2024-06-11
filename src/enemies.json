@@ -10,8 +10,8 @@
     "enemiesCount": 6
   },
   {
-    "health": "50",
+    "health": "100",
     "skin": "dog.gif",
-    "enemiesCount": 12
+    "enemiesCount": 20
   }
 ]
