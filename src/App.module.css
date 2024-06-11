@@ -45,9 +45,9 @@
   background-color: #1E9BC7;
   border-radius: 0px 20px 20px 0px;
   margin-left: -10px;
-  margin-top: 10px;
+  margin-top: 8px;
   width: 180px;
-  height: 51px;
+  height: 56px;
   padding-left: 20px;
   p {
     margin-block-start: 0px;
@@ -76,7 +76,7 @@
   overflow: hidden;
   background-color: white;
   margin-left: -12px;
-  height: 15px;
+  height: 12px;
   width: 185px;
   border-radius: 0px 10px 10px 0px;
   background: linear-gradient(45deg, #1FA2C800, #F5ABAB);
@@ -89,7 +89,7 @@
 
 .scoreProgressWrapper {
   background-color: white;
-  margin-right: 5px;
+  margin-right: 3px;
   border-radius: 10px;
 }
 
@@ -114,4 +114,32 @@
   background-color: #FDDD6D;
   height: 54px;
   width: 54px;
+}
+
+.pointsWrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 150px;
+  margin-left: 8px;
+  margin-top: 2px;
+}
+
+.pointWrapper {
+  border: 3px solid #C39369;
+  background-color: #A67D59;
+  width: 65px;
+  height: 10px;
+  border-radius: 10px;
+  img {
+    height: 20px;
+    width: 23px;
+    margin-top: -5px;
+    margin-left: -10px;
+    position: absolute;
+  }
+  p {
+    font-size: 9px;
+    text-align: center;
+    margin-top: -1px;
+  }
 }
