@@ -11,6 +11,12 @@ const App = () => {
   const windowWidth =
     window.innerWidth > MOBILE_SCREEN ? 600 : window.innerWidth - 100;
 
+  const ENEMY_DAMAGE = 35;
+  const ENEMY_MOVEMENT_SPEED = 50;
+  const ENEMY_HIGHT = 80;
+  const WINDOW_HEIGHT = 160;
+  const ENEMY_SPAWN_COORDINATES = -80;
+
   const [enemies, setEnemies] = useState<IEnemy[]>([]);
   const [heroHealth, setHeroHealth] = useState(100);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -24,6 +30,7 @@ const App = () => {
     }
   }, [heroHealth]);
 
+  // Hero getting damage from enemies
   useEffect(() => {
     const interval = setInterval(() => {
       if (
@@ -38,6 +45,58 @@ const App = () => {
       }
     }, 2000);
   }, [enemies, windowWidth]);
+
+  // Enemies movement
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setEnemies((prevEnemies) => {
+        if (prevEnemies.length === 0) return prevEnemies;
+
+        const updatedEnemies = prevEnemies.map((enemy, index) => {
+          if (enemy.x >= windowWidth && index !== 0) {
+            return enemy;
+          }
+          if (isProjectileHit && enemy.x >= windowWidth && index === 0) {
+            return {
+              ...enemy,
+              health: enemy.health - (isGameOver ? 0 : ENEMY_DAMAGE),
+            };
+          }
+          if (isProjectileHit && index === 0) {
+            return {
+              ...enemy,
+              x: enemy.x + 50,
+              health: enemy.health - (isGameOver ? 0 : ENEMY_DAMAGE),
+            };
+          } else {
+            return {
+              ...enemy,
+              x: enemy.x + (isGameOver ? 0 : ENEMY_MOVEMENT_SPEED),
+            };
+          }
+        });
+
+        return updatedEnemies;
+      });
+    }, 500);
+    return () => clearInterval(interval);
+  }, [isGameOver, isProjectileHit, setEnemies, windowWidth]);
+
+  // Spawn enemies
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isGameOver) {
+        const newEnemy = {
+          id: Date.now(),
+          x: ENEMY_SPAWN_COORDINATES,
+          y: WINDOW_HEIGHT - ENEMY_HIGHT - Math.random() * 10,
+          health: 100,
+        };
+        setEnemies((prevEnemies) => [...prevEnemies, newEnemy]);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [isGameOver, setEnemies]);
 
   const removeEnemy = (id) => {
     setScore((prevEnemies) => prevEnemies + 1);
@@ -54,14 +113,7 @@ const App = () => {
           </div>
         )}
         <Hero heroHealth={heroHealth} />
-        <Enemies
-          enemies={enemies}
-          setEnemies={setEnemies}
-          isProjectileHit={isProjectileHit}
-          isGameOver={isGameOver}
-          removeEnemy={removeEnemy}
-          windowWidth={windowWidth}
-        />
+        <Enemies enemies={enemies} removeEnemy={removeEnemy} />
         <Projectiles
           setIsProjectileHit={setIsProjectileHit}
           enemies={enemies}
