@@ -10,7 +10,7 @@ const Enemy: React.FC<IEnemyComponent> = ({
   health,
   removeEnemy,
   skin,
-  currentVawe
+  currentWave
 }: IEnemyComponent) => {
   useEffect(() => {
     if (health <= 0) {
@@ -22,13 +22,13 @@ const Enemy: React.FC<IEnemyComponent> = ({
   const [imgWidth, setImgWidth] = useState<string>('90px')
 
   useEffect(() => {
-    switch(currentVawe) {
+    switch(currentWave) {
       case 1:
         setImgHeight('50px')
         break;
     }
 
-  }, [currentVawe])
+  }, [currentWave])
 
   return (
     <div className={styles.enemy} style={{ top: `${y}%`, right: x }}>
