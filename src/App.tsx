@@ -24,7 +24,7 @@ const App = () => {
   const [isProjectileHit, setIsProjectileHit] = useState(false);
   const [scorePopups, setScorePopups] = useState<IScorePopup>();
   const [score, setScore] = useState(0);
-  const [currentVawe, setCurrentVawe] = useState<number>(0);
+  const [currentWave, setCurrentWave] = useState<number>(0);
 
   useEffect(() => {
     if (heroHealth === 0) {
@@ -89,7 +89,7 @@ const App = () => {
   // Spawn enemies
   useEffect(() => {
     if (isFirstRender.current) {
-      const enemiesCount = (enemiesJson as any)[currentVawe].enemiesCount;
+      const enemiesCount = (enemiesJson as any)[currentWave].enemiesCount;
 
       for (let i = 0; i < enemiesCount; ++i) {
         setTimeout(() => {
@@ -97,15 +97,15 @@ const App = () => {
             id: Date.now() + i,
             x: ENEMY_SPAWN_COORDINATES,
             y: WINDOW_HEIGHT - ENEMY_HIGHT - Math.random() * 10,
-            health: (enemiesJson as any)[currentVawe].health,
-            skin: (enemiesJson as any)[currentVawe].skin,
+            health: (enemiesJson as any)[currentWave].health,
+            skin: (enemiesJson as any)[currentWave].skin,
           };
           setEnemies((prevEnemies) => [...prevEnemies, newEnemy]);
         }, i * 1000);
       }
       isFirstRender.current = false;
     }
-  }, [enemiesJson, setEnemies, currentVawe, isFirstRender]);
+  }, [enemiesJson, setEnemies, currentWave, isFirstRender]);
 
   const removeEnemy = (id: number) => {
     setScore((prevEnemies) => prevEnemies + 1);
@@ -114,7 +114,7 @@ const App = () => {
 
     if (enemies.length <= 1) {
       isFirstRender.current = true;
-      setCurrentVawe((prevVawe) => prevVawe + 1);
+      setCurrentWave((prevWave) => prevWave + 1);
     }
   };
 
@@ -136,15 +136,15 @@ const App = () => {
             <p>{score}/100</p>
           </div>
         </div>
-        <div className={styles.vawesCounter}>
-          <p>{currentVawe + 1}</p>
+        <div className={styles.wavesCounter}>
+          <p>{currentWave + 1}</p>
         </div>
         <Hero heroHealth={heroHealth} />
         <Enemies
           enemies={enemies}
           removeEnemy={removeEnemy}
-          skin={(enemiesJson as any)[currentVawe].skin}
-          currentVawe={currentVawe}
+          skin={(enemiesJson as any)[currentWave].skin}
+          currentWave={currentWave}
         />
         <Projectiles
           setIsProjectileHit={setIsProjectileHit}

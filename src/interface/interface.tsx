@@ -22,7 +22,7 @@ export interface IEnemies {
   enemies: IEnemy[];
   removeEnemy: (id: number) => void;
   skin: string;
-  currentVawe: number;
+  currentWave: number;
 }
 
 export interface IEnemyHealthBar {
@@ -36,7 +36,7 @@ export interface IEnemyComponent {
   health: number;
   removeEnemy: (id: number) => void;
   skin: string;
-  currentVawe: number
+  currentWave: number
 }
 
 export interface IHeroHealthBar {

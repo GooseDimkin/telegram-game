@@ -6,7 +6,7 @@ const Enemies: React.FC<IEnemies> = ({
   enemies,
   removeEnemy,
   skin,
-  currentVawe,
+  currentWave,
 }: IEnemies) => {
   return (
     <div>
@@ -16,7 +16,7 @@ const Enemies: React.FC<IEnemies> = ({
           {...enemy}
           removeEnemy={removeEnemy}
           skin={skin}
-          currentVawe={currentVawe}
+          currentWave={currentWave}
         />
       ))}
     </div>
