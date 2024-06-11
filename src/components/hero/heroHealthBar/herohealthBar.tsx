@@ -1,7 +1,10 @@
 import React from "react";
 import styles from "./herohealthBar.module.css";
+import { IHeroHealthBar } from "src/interface/interface";
 
-const HeroHealthBar = ({heroHealth }) => {
+const HeroHealthBar: React.FC<IHeroHealthBar> = ({
+  heroHealth,
+}: IHeroHealthBar) => {
   return (
     <div className={styles.heroHealthBar}>
       <div
