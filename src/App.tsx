@@ -126,6 +126,16 @@ const App = () => {
             <p>Game Over</p>
           </div>
         )}
+        <div className={styles.scoreProgressBarWrapper}>
+          <p>score:</p>
+          <div className={styles.scoreProgressBar}>
+            <div
+              className={styles.scoreProgress}
+              style={{ width: `${score}%` }}
+            />
+            <p>{score}/100</p>
+          </div>
+        </div>
         {currentVawe > 0 && (
           <div className={styles.vawesCounter}>
             <p>{currentVawe}</p>
