@@ -11,7 +11,7 @@
   },
   {
     "health": "100",
-    "skin": "dog.gif",
+    "skin": "enemy_3.gif",
     "enemiesCount": 20
   }
 ]
