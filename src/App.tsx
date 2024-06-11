@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "./App.module.css";
-import Enemies from "./components/enemies/enemies.tsx";
-import Projectiles from "./components/projectiles/projectiles.tsx";
-import Hero from "./components/hero/hero.tsx";
-import ScorePopup from "./components/scorePopup/scorePopup.tsx";
-import { IEnemy, IScorePopup } from "./interface/interface.tsx";
+import Enemies from "./components/enemies/enemies";
+import Projectiles from "./components/projectiles/projectiles";
+import Hero from "./components/hero/hero";
+import ScorePopup from "./components/scorePopup/scorePopup";
+import { IEnemy, IScorePopup } from "./interface/interface";
 
 const App = () => {
   const MOBILE_SCREEN = 730;
@@ -98,7 +98,7 @@ const App = () => {
     return () => clearInterval(interval);
   }, [isGameOver, setEnemies]);
 
-  const removeEnemy = (id) => {
+  const removeEnemy = (id: number) => {
     setScore((prevEnemies) => prevEnemies + 1);
     setEnemies((prevEnemies) => prevEnemies.filter((enemy) => enemy.id !== id));
     setScorePopups({ id: Date.now(), x: enemies[0].x - 50, y: enemies[0].y });

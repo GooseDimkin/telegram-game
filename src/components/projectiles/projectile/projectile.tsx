@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "./projectile.module.css";
+import { IProjectile } from "src/interface/interface";
 
-const Projectile = ({
+const Projectile: React.FC<IProjectile> = ({
   id,
   x,
   y,
   removeProjectile,
   enemies,
   setIsProjectileHit,
-}) => {
+}: IProjectile) => {
   const MOBILE_SCREENS = 730;
   const DESKTOP_HERO_COLLISION = 760;
   const MOBILE_HERO_COLLISION = 400;

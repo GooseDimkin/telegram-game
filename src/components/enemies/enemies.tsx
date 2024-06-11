@@ -1,10 +1,11 @@
 import React from "react";
-import Enemy from "./enemy/enemy.tsx";
+import Enemy from "./enemy/enemy";
+import { IEnemies, IEnemy } from "src/interface/interface";
 
-const Enemies = ({ enemies, removeEnemy }) => {
+const Enemies: React.FC<IEnemies> = ({ enemies, removeEnemy }: IEnemies) => {
   return (
     <div>
-      {enemies.map((enemy) => (
+      {enemies.map((enemy: IEnemy) => (
         <Enemy key={enemy.id} {...enemy} removeEnemy={removeEnemy} />
       ))}
     </div>

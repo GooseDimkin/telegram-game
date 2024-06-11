@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Projectile from "./projectile/projectile.tsx";
-import { IProjectile } from "../../interface/interface.tsx";
+import Projectile from "./projectile/projectile";
+import { IProjectile, IProjectiles } from "../../interface/interface";
 
-const Projectiles = ({ setIsProjectileHit, enemies }) => {
+const Projectiles: React.FC<IProjectiles> = ({
+  setIsProjectileHit,
+  enemies,
+}: IProjectiles) => {
   const [projectiles, setProjectiles] = useState<IProjectile[]>([]);
 
-  const removeProjectile = (id) => {
+  const removeProjectile = (id: number) => {
     setProjectiles((prevProjectiles) =>
       prevProjectiles.filter((projectile) => projectile.id !== id)
     );
@@ -17,7 +20,10 @@ const Projectiles = ({ setIsProjectileHit, enemies }) => {
       x: 100,
       y: 550,
     };
-    setProjectiles((prevProjectiles) => [...prevProjectiles, newProjectile]);
+    setProjectiles((prevProjectiles: any) => [
+      ...prevProjectiles,
+      newProjectile,
+    ]);
   };
 
   useEffect(() => {

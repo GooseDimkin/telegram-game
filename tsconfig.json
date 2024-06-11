@@ -1,1 +1,45 @@
-{ "include": ["./declaration.d.ts"] }
+{
+    "compilerOptions": {
+      "target": "es6",
+      "lib": [
+        "dom",
+        "dom.iterable",
+        "esnext"
+      ],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "noEmit": true,
+      "jsx": "preserve",
+      "baseUrl": ".",
+      "paths": {
+        "@/components/*": [
+          "components/*"
+        ],
+        "@/interfaces/*": [
+          "interfaces/*"
+        ],
+        "@/modules/*": [
+          "modules/*"
+        ]
+      },
+      "incremental": true
+    },
+    "exclude": [
+      "node_modules"
+    ],
+    "include": [
+      "next-env.d.ts",
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js"
+    ]
+  }
+  

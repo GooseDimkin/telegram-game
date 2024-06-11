@@ -1,8 +1,9 @@
 import React from "react";
-import HeroHealthBar from "./heroHealthBar/herohealthBar.tsx";
+import HeroHealthBar from "./heroHealthBar/herohealthBar";
 import styles from "./hero.module.css";
+import { IHero } from "src/interface/interface";
 
-const Hero = ({ heroHealth }) => {
+const Hero: React.FC<IHero> = ({ heroHealth }: IHero) => {
   return (
     <div>
       <HeroHealthBar heroHealth={heroHealth} />
