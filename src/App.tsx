@@ -127,17 +127,23 @@ const App = () => {
           </div>
         )}
         <div className={styles.scoreProgressBarWrapper}>
-          <p>score:</p>
-          <div className={styles.scoreProgressBar}>
-            <div
-              className={styles.scoreProgress}
-              style={{ width: `${score}%` }}
-            />
-            <p>{score}/100</p>
+          <div className={styles.avatarOuterWrapper}>
+            <div className={styles.avatarWrapper}></div>
           </div>
-        </div>
-        <div className={styles.wavesCounter}>
-          <p>{currentWave + 1}</p>
+          <div className={styles.playerDataWrapper}>
+            <div className={styles.nicknameWrapper}>
+              <p>nickname</p>
+              <div className={styles.playerDataBorder} />
+            </div>
+            <div className={styles.scoreProgressBar}>
+              <div className={styles.scoreProgressWrapper}>
+                <div
+                  className={styles.scoreProgress}
+                  style={{ width: `${score}%` }}
+                />
+              </div>
+            </div>
+          </div>
         </div>
         <Hero heroHealth={heroHealth} />
         <Enemies
