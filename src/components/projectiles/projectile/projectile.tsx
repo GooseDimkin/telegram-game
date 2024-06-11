@@ -25,7 +25,7 @@ const Projectile: React.FC<IProjectile> = ({
     }, 1);
 
     return () => clearInterval(interval);
-  }, [enemies]);
+  }, []);
 
   let enemiesCollision =
     window.innerWidth > MOBILE_SCREENS
