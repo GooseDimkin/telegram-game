@@ -136,11 +136,9 @@ const App = () => {
             <p>{score}/100</p>
           </div>
         </div>
-        {currentVawe > 0 && (
-          <div className={styles.vawesCounter}>
-            <p>{currentVawe}</p>
-          </div>
-        )}
+        <div className={styles.vawesCounter}>
+          <p>{currentVawe + 1}</p>
+        </div>
         <Hero heroHealth={heroHealth} />
         <Enemies
           enemies={enemies}
