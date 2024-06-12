@@ -12,21 +12,23 @@ const PlayerDataPanel: React.FC<IPlayerDataPanel> = ({
         <div className={styles.avatarWrapper}></div>
       </div>
       <div className={styles.playerDataWrapper}>
-        <div className={styles.nicknameWrapper}>
-          <p>nickname</p>
-          <div className={styles.playerDataBorder} />
-        </div>
-        <div className={styles.scoreProgressBar}>
-          <div className={styles.scoreProgressWrapper}>
-            <div
-              className={styles.scoreProgress}
-              style={{ width: `${score}%` }}
-            />
+        <div className={styles.playerDataInnerWrapper}>
+          <div className={styles.nicknameWrapper}>
+            <p>nickname</p>
+            <div className={styles.playerDataBorder} />
           </div>
-        </div>
-        <div className={styles.pointsWrapper}>
-          <Point icon="point1.svg" alt="point1" value="5000" />
-          <Point icon="point2.svg" alt="point2" value="300" />
+          <div className={styles.scoreProgressBar}>
+            <div className={styles.scoreProgressWrapper}>
+              <div
+                className={styles.scoreProgress}
+                style={{ width: `${score}%` }}
+              />
+            </div>
+          </div>
+          <div className={styles.pointsWrapper}>
+            <Point icon="point1.svg" alt="point1" value="5000" />
+            <Point icon="point2.svg" alt="point2" value="300" />
+          </div>
         </div>
       </div>
     </div>

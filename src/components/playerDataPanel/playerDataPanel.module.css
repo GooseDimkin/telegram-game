@@ -23,12 +23,23 @@
 }
 
 .playerDataWrapper {
-  background-color: #1e9bc7;
+  background: linear-gradient(45deg, #379ABC, #3CA9CA);
   border-radius: 0px 20px 20px 0px;
   margin-left: -10px;
   margin-top: 8px;
   width: 180px;
   height: 54px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.playerDataInnerWrapper {
+  background: linear-gradient(45deg, #188AB7, #1E9BC7);
+  border-radius: 0px 19px 19px 0px;
+  margin-left: -20px;
+  width: 179px;
+  height: 51px;
   padding-left: 20px;
   p {
     margin-block-start: 0px;
@@ -45,12 +56,13 @@
 }
 
 .playerDataBorder {
-  height: 15px;
+  height: 12px;
   width: 0px;
-  border: 2px solid #c2edde2e;
+  border: 1px solid #c2edde2e;
   border-radius: 10px;
   margin-left: 10px;
-  margin-top: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .scoreProgressBar {
