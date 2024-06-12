@@ -1,0 +1,19 @@
+.pointWrapper {
+  border: 3px solid #c39369;
+  background-color: #a67d59;
+  width: 65px;
+  height: 10px;
+  border-radius: 10px;
+  img {
+    height: 20px;
+    width: 23px;
+    margin-top: -5px;
+    margin-left: -10px;
+    position: absolute;
+  }
+  p {
+    font-size: 9px;
+    text-align: center;
+    margin-top: -1px;
+  }
+}

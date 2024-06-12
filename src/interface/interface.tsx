@@ -36,7 +36,7 @@ export interface IEnemyComponent {
   health: number;
   removeEnemy: (id: number) => void;
   skin: string;
-  currentWave: number
+  currentWave: number;
 }
 
 export interface IHeroHealthBar {
@@ -64,4 +64,14 @@ export interface IProjectiles {
 export interface IScorePopupComponent {
   scorePopups: IScorePopup | undefined;
   score: number;
+}
+
+export interface IPlayerDataPanel {
+  score: number;
+}
+
+export interface IPoint {
+  icon: string;
+  alt: string;
+  value: string;
 }

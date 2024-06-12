@@ -6,6 +6,7 @@ import Hero from "./components/hero/hero";
 import ScorePopup from "./components/scorePopup/scorePopup";
 import { IEnemy, IScorePopup } from "./interface/interface";
 import enemiesJson from "./enemies.json";
+import PlayerDataPanel from "./components/playerDataPanel/playerDataPanel";
 
 const App = () => {
   const MOBILE_SCREEN = 730;
@@ -126,35 +127,7 @@ const App = () => {
             <p>Game Over</p>
           </div>
         )}
-        <div className={styles.scoreProgressBarWrapper}>
-          <div className={styles.avatarOuterWrapper}>
-            <div className={styles.avatarWrapper}></div>
-          </div>
-          <div className={styles.playerDataWrapper}>
-            <div className={styles.nicknameWrapper}>
-              <p>nickname</p>
-              <div className={styles.playerDataBorder} />
-            </div>
-            <div className={styles.scoreProgressBar}>
-              <div className={styles.scoreProgressWrapper}>
-                <div
-                  className={styles.scoreProgress}
-                  style={{ width: `${score}%` }}
-                />
-              </div>
-            </div>
-            <div className={styles.pointsWrapper}>
-              <div className={styles.pointWrapper}>
-                <img src="point1.svg" alt="point1" />
-                <p>5000</p>
-              </div>
-              <div className={styles.pointWrapper}>
-                <img src="point2.svg" alt="point1" />
-                <p>5000</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <PlayerDataPanel score={score} />
         <Hero heroHealth={heroHealth} />
         <Enemies
           enemies={enemies}
