@@ -1,0 +1,90 @@
+.wrapper {
+  position: absolute;
+  top: 0;
+  padding-left: 20px;
+  padding-top: 40px;
+  display: flex;
+}
+
+.avatarOuterWrapper {
+  border: 5px solid #b3e2d6;
+  background-color: #b3e2d6;
+  border-radius: 15px;
+  height: 54px;
+  width: 54px;
+  z-index: 999;
+}
+
+.avatarWrapper {
+  border-radius: 18px;
+  background-color: #fddd6d;
+  height: 54px;
+  width: 54px;
+}
+
+.playerDataWrapper {
+  background-color: #1e9bc7;
+  border-radius: 0px 20px 20px 0px;
+  margin-left: -10px;
+  margin-top: 8px;
+  width: 180px;
+  height: 54px;
+  padding-left: 20px;
+  p {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+  }
+}
+
+.nicknameWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.playerDataBorder {
+  height: 15px;
+  width: 0px;
+  border: 2px solid #c2edde2e;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.scoreProgressBar {
+  overflow: hidden;
+  background-color: white;
+  margin-left: -12px;
+  height: 12px;
+  width: 185px;
+  border-radius: 0px 10px 10px 0px;
+  background: linear-gradient(45deg, #1fa2c800, #f5abab);
+  text-align: center;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.scoreProgressWrapper {
+  background-color: white;
+  margin-right: 3px;
+  border-radius: 10px;
+}
+
+.scoreProgress {
+  background-color: #b2bf31;
+  width: 185px;
+  height: 7px;
+  border-radius: 10px;
+}
+
+.pointsWrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 150px;
+  margin-left: 8px;
+  margin-top: 1px;
+}
